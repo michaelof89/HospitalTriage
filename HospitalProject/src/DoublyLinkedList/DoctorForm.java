@@ -158,11 +158,11 @@ public class DoctorForm {
 		frame.getContentPane().add(SymptomsField);
 		
 		JButton btnSave = new JButton("Save ");
-		btnSave.setBounds(188, 561, 65, 23);
+		btnSave.setBounds(93, 563, 73, 23);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(263, 561, 65, 23);
+		btnClear.setBounds(188, 563, 72, 23);
 		frame.getContentPane().add(btnClear);
 		
 		JLabel PriorityLabel = new JLabel("Priority Level");
@@ -181,6 +181,10 @@ public class DoctorForm {
 		JLabel lblNewLabel_4 = new JLabel("Treatment");
 		lblNewLabel_4.setBounds(10, 471, 73, 14);
 		frame.getContentPane().add(lblNewLabel_4);
+		
+		JButton btnClose = new JButton("Close");
+		btnClose.setBounds(284, 563, 82, 23);
+		frame.getContentPane().add(btnClose);
 		
 		//Filling doctor form fields with nurse form information
 		if(!NoPatients)
@@ -222,7 +226,7 @@ public class DoctorForm {
 				} 
 			}
 		});
-		//Same as nurseform
+		//Setting text for all fields to null with a "clear" button
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FirstNameField.setText(null);
@@ -235,6 +239,18 @@ public class DoctorForm {
 				//PriorityField.setSelectedItem("");
 				
 			}
+		});
+		
+		btnClose.addActionListener(new ActionListener()
+		{
+
+			public void actionPerformed(ActionEvent e)
+			{
+				frame.dispose();
+				SelectionScreen menu = new SelectionScreen();
+				menu.frame.setVisible(true);
+			}
+	
 		});
 
 	}

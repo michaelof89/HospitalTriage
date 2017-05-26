@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 
 public class SelectionScreen {
 
-	private JFrame frame;
+	JFrame frame;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

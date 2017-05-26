@@ -6,6 +6,7 @@ import javax.swing.JTextField;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.List;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -29,7 +30,7 @@ import javax.swing.DefaultComboBoxModel;
 
 public class ReceptionistForm {
 	
-	JFrame frame;
+	public JFrame frame;
 	private JTextField FirstNameField;
 	private JTextField LastNameField;
 	private JTextField AgeField;
@@ -139,12 +140,20 @@ public class ReceptionistForm {
 		frame.getContentPane().add(SymptomsField);
 		
 		JButton btnSave = new JButton("Save ");
-		btnSave.setBounds(188, 485, 65, 23);
+		btnSave.setBounds(128, 486, 65, 23);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(263, 485, 65, 23);
+		btnClear.setBounds(203, 486, 65, 23);
 		frame.getContentPane().add(btnClear);
+		
+		JButton btnClose = new JButton("Close");
+		btnClose.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnClose.setBounds(278, 486, 73, 23);
+		frame.getContentPane().add(btnClose);
 		
 		btnSave.addActionListener(new ActionListener() 
 		{
@@ -180,9 +189,22 @@ public class ReceptionistForm {
 				SymptomsField.setText(null);
 			}
 			});
-
-		}
 		
+		btnClose.addActionListener(new ActionListener()
+				{
+			
+			public void actionPerformed(ActionEvent e)
+			{
+				frame.dispose();
+				SelectionScreen menu = new SelectionScreen();
+				menu.frame.setVisible(true);
+				
+			}
+				
+				});
+				
+		
+		}
 }
 
 

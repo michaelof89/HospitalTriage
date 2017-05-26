@@ -159,11 +159,11 @@ public class NurseForm {
 		frame.getContentPane().add(SymptomsField);
 		
 		JButton btnSave = new JButton("Save ");
-		btnSave.setBounds(188, 485, 65, 23);
+		btnSave.setBounds(93, 487, 73, 23);
 		frame.getContentPane().add(btnSave);
 		
 		JButton btnClear = new JButton("Clear");
-		btnClear.setBounds(263, 485, 65, 23);
+		btnClear.setBounds(188, 487, 73, 23);
 		frame.getContentPane().add(btnClear);
 		
 		JLabel PriorityLabel = new JLabel("Priority Level (1-10)");
@@ -174,6 +174,10 @@ public class NurseForm {
 		PriorityField.setModel(new DefaultComboBoxModel(new String[] {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
 		PriorityField.setBounds(147, 443, 59, 20);
 		frame.getContentPane().add(PriorityField);
+		
+		JButton btnClose = new JButton("Close");
+		btnClose.setBounds(285, 487, 73, 23);
+		frame.getContentPane().add(btnClose);
 		
 		//Filling NurseForm fields with ReceptionistPatient information
 		if(!NoPatients)
@@ -228,7 +232,20 @@ public class NurseForm {
 				
 			}
 			});
-
-		}
+	  
+			
+			btnClose.addActionListener(new ActionListener()
+			{
+	
+				public void actionPerformed(ActionEvent e)
+				{
+					frame.dispose();
+					SelectionScreen menu = new SelectionScreen();
+					menu.frame.setVisible(true);
+				}
+		
+			});
+		
+	}
 }
 
