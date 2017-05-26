@@ -57,7 +57,7 @@ public class SelectionScreen {
 				form1.frame.setVisible(true);	
 			}
 		});
-		btnReceptionist.setBounds(48, 149, 89, 23);
+		btnReceptionist.setBounds(20, 149, 114, 23);
 		frame.getContentPane().add(btnReceptionist);
 		
 		//Making nurse button
@@ -69,7 +69,7 @@ public class SelectionScreen {
 				form1.frame.setVisible(true);	
 			}
 		});
-		btnNurse.setBounds(177, 149, 89, 23);
+		btnNurse.setBounds(152, 149, 114, 23);
 		frame.getContentPane().add(btnNurse);
 		
 		//Making doctor button
@@ -84,7 +84,7 @@ public class SelectionScreen {
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnDoctor.setBounds(300, 149, 89, 23);
+		btnDoctor.setBounds(288, 149, 114, 23);
 		frame.getContentPane().add(btnDoctor);
 	}
 }
