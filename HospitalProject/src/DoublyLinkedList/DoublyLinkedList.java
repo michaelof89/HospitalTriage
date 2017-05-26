@@ -74,7 +74,7 @@ public class DoublyLinkedList
 		if(index < 1 || index > size) return;
 		
 		Link current = head;
-		int i = 0; //TODO: changed from 1 to 0, no effect
+		int i = 0; 
 		while(i < index)
 		{
 			current = current.next;

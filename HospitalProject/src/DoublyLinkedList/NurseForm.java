@@ -233,7 +233,7 @@ public class NurseForm {
 			}
 			});
 	  
-			
+		//Adds close button, disposes of current frame and recreates the selection screen menu
 			btnClose.addActionListener(new ActionListener()
 			{
 	

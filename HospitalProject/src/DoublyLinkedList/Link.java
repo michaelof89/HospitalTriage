@@ -5,6 +5,7 @@ public class Link {
 	public Link previous;
 	public Link next;
 	
+	//Creating nodes on the doubly linked list
 	public Link(Patient data)
 	{
 		previous = null;
@@ -12,6 +13,7 @@ public class Link {
 		next = null;
 	}
 	
+	//Constructor for nodes on doubly linked list
 	public Link(Link previous, Patient data, Link next)
 	{
 		this.previous = previous;
@@ -19,6 +21,7 @@ public class Link {
 		this.next = next;
 	}
 	
+	//Data is the centre of the node - carrying the information
 	public Patient Data()
 	{
 		return data;
