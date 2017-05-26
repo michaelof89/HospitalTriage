@@ -160,7 +160,7 @@ public class ReceptionistForm {
 				Patient ReceptionistPatient = new Patient(FirstNameField.getText().trim(), LastNameField.getText(), AgeField.getText(), 
 						GenderField.getSelectedItem().toString(), MobileNumberField.getText(), AddressField.getText(), SymptomsField.getText());
 				//Creating connection to the file
-				PatientDatabase MockDatabase = new PatientDatabase("g:/tmp/ReceptionistPatients.csv");
+				PatientDatabase MockDatabase = new PatientDatabase("C:/tmp/ReceptionistPatients.csv");
 				MockDatabase.write(ReceptionistPatient.giveInfoAsArrayList());
 				//Show pop-up that message is submitted
 				JOptionPane.showMessageDialog(null, "Patient Information Submitted");

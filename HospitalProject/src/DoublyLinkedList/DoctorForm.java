@@ -55,7 +55,7 @@ public class DoctorForm {
 	 */
 	public DoctorForm() {
 		this.PatientList = new DoublyLinkedList();
-		this.MockDatabase = new PatientDatabase("g:/tmp/DoctorPatients.csv");
+		this.MockDatabase = new PatientDatabase("C:/tmp/DoctorPatients.csv");
 		initialize();
 	}
 	
@@ -70,7 +70,7 @@ public class DoctorForm {
 	private void initialize() 
 	{
 		//Gets the full nurse file, turns into a list
-		PatientList = MockDatabase.FileToDoublyLinkedList("g:/tmp/NursePatients.csv");
+		PatientList = MockDatabase.FileToDoublyLinkedList("C:/tmp/NursePatients.csv");
 		//Grabs the highest priority patient from the list. TODO: Supposed to remove patient from the list, but doesn't.
 		Patient SamplePatient = new Patient();
 		boolean NoPatients = PatientList.isEmpty();
@@ -79,7 +79,7 @@ public class DoctorForm {
 			SamplePatient = PatientList.GiveHighestPriorityPatient();
 		}	
 		//Turns the list back into the file, overwriting the previous file content.
-		MockDatabase.DoublyLinkedListToFile("g:/tmp/NursePatients.csv", PatientList);
+		MockDatabase.DoublyLinkedListToFile("C:/tmp/NursePatients.csv", PatientList);
 		
 		
 		frame = new JFrame();
@@ -199,7 +199,8 @@ public class DoctorForm {
 			//Attempted pop-up if no patients are available.
 			JOptionPane.showMessageDialog(null, "There are no current patients.");
 		}
-		//Same as nurseform
+
+		//Check if any fields are empty
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(FirstNameField.getText().isEmpty()||(LastNameField.getText().isEmpty())||(AgeField.getText().isEmpty())||(GenderField.getSelectedItem().equals(""))||
@@ -207,15 +208,16 @@ public class DoctorForm {
 					JOptionPane.showMessageDialog(null, "Information Missing");
 				else	
 				{
+					//If all are filled, create new patient using data held in fields
 				Patient DoctorPatient = new Patient(FirstNameField.getText()/*.trim()*/, LastNameField.getText(), AgeField.getText(), 
 						GenderField.getSelectedItem().toString(), MobileNumberField.getText(), AddressField.getText(), SymptomsField.getText());
 				
-				//Adding in the treatment and priority fields
+				//Creating connection to the file and adding the priority and treatment fields
 				DoctorPatient.TreatmentField = TreatmentField.getText();
 				DoctorPatient.PriorityField = Integer.parseInt(PriorityField.getText());
-				
-				PatientDatabase MockDatabase = new PatientDatabase("g:/tmp/DoctorsPatients.csv");
+				PatientDatabase MockDatabase = new PatientDatabase("C:/tmp/DoctorsPatients.csv");
 				MockDatabase.write(DoctorPatient.giveInfoAsArrayList());
+				//Show pop-up that message is submitted
 				JOptionPane.showMessageDialog(null, "Patient Information Submitted");
 				} 
 			}

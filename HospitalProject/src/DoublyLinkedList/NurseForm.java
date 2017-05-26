@@ -62,7 +62,7 @@ public class NurseForm {
 	public NurseForm()
 	{
 		this.PatientList = new DoublyLinkedList();
-		this.MockDatabase = new PatientDatabase("g:/tmp/NursePatients.csv");
+		this.MockDatabase = new PatientDatabase("C:/tmp/NursePatients.csv");
 		initialize();
 	}
 	/**
@@ -72,7 +72,7 @@ public class NurseForm {
 	{
 		
 		//Reads the receptionist list, grabs the final entry (FIFO)
-		PatientList = MockDatabase.FileToDoublyLinkedList("g:/tmp/ReceptionistPatients.csv");
+		PatientList = MockDatabase.FileToDoublyLinkedList("C:/tmp/ReceptionistPatients.csv");
 		//Attempts check to see if the Receptionist has any patients
 		boolean NoPatients = PatientList.isEmpty();
 		Patient SamplePatient = new Patient();
@@ -81,7 +81,7 @@ public class NurseForm {
 			SamplePatient = PatientList.GetLastPatient();
 		}	
 		//Removing the selected entry from the receptionist list by rewriting the list without it TODO: This is slightly bugged
-		MockDatabase.DoublyLinkedListToFile("g:/tmp/ReceptionistPatients.csv", PatientList);
+		MockDatabase.DoublyLinkedListToFile("C:/tmp/ReceptionistPatients.csv", PatientList);
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 500, 600);
@@ -193,7 +193,7 @@ public class NurseForm {
 		}
 		
 		
-		//TODO: Repeat comments from receptionist
+		//Check if any fields are empty
 		btnSave.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if(FirstNameField.getText().isEmpty()||(LastNameField.getText().isEmpty())||(AgeField.getText().isEmpty())||(GenderField.getSelectedItem().equals(""))||
@@ -201,16 +201,18 @@ public class NurseForm {
 					JOptionPane.showMessageDialog(null, "Information Missing");
 				else
 				{		
+					//If all are filled, create new patient using data held in fields
 				Patient NursePatient = new Patient(FirstNameField.getText()/*.trim()*/, LastNameField.getText(), AgeField.getText(), 
 						GenderField.getSelectedItem().toString(), MobileNumberField.getText(), AddressField.getText(), SymptomsField.getText());
-				
+				//Creating connection to the file and adding the priority field
 				NursePatient.PriorityField = Integer.parseInt(PriorityField.getSelectedItem().toString());
 				MockDatabase.write(NursePatient.giveInfoAsArrayList());
+				//Show pop-up that message is submitted
 				JOptionPane.showMessageDialog(null, "Patient Information Submitted");
 				}
 			}
 		});
-		
+		//Setting text for all fields to null with a "clear" button
 		btnClear.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
